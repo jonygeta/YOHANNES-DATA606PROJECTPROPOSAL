@@ -1,0 +1,105 @@
+---
+title: "DATA 606 Data Project Proposal"
+author: "Yohannes Deboch"
+---
+
+### Data Preparation
+
+```{r setup, echo=TRUE, results='hide', warning=FALSE, message=FALSE}
+# load data
+cars <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data", header = FALSE)
+colnames(cars) <- c("mpg","cylinders","displacement","horsepower","weight","acceleration","model year","origin","car name")
+```
+
+
+### Research question 
+
+**You should phrase your research question in a way that matches up with the scope of inference your dataset allows for.**
+
+Answer: 
+
+This Project is aimed at determining cars millage based on other attribures . The central question that will  be answered by this project is : Can we predict cars mileage based on other attributes?
+
+
+### Cases 
+
+In this project the cases are  observation of a cars information.
+
+```{r}
+nrow(cars)
+```
+There were 397 cases. 
+
+
+### Data collection 
+
+The data was collected from the UCI machine learning repository website.
+Data set name: 
+Auto MPG Data Set 
+
+
+### Type of study 
+
+ This is a observational study.
+
+
+### Data Source 
+
+Data link 
+https://archive.ics.uci.edu/ml/datasets/Auto+MPG
+
+
+### Dependent Variable
+
+Mile per gallon (mpg) is the dependent variable. It's continuous.
+
+
+### Independent Variable
+
+ The independent variables are the following ones
+```{r}
+colnames(cars)[2:8]
+```
+
+
+### Relevant summary statistics
+
+First and last few rows of the dat
+```{r}
+head(cars)
+tail(cars)
+```
+
+Structure of dataset
+```{r}
+str(cars)
+```
+
+
+
+```{r}
+summary(cars)
+```
+
+```{r}
+boxplot(cars$mpg~cars$cylinders,main = "Milage by Cylinders")
+```
+
+```{r}
+boxplot(cars$mpg~cars$origin,main = "Milage by origin")
+```
+
+```{r}
+boxplot(cars$mpg~cars$cylinders, main = "Milage by cylinders")
+```
+```{r}
+plot(cars$mpg,cars$weight,main = "Milage by weight")
+```
+```{r}
+hist(cars$mpg,main="Distribution of Milage")
+```
+```{r}
+cor(cars[,c(1,2,3,5,6,7)])
+```
+
+From the summary statistics we can see that there are no missing values in the data. mpg response variable is normally distributed . From correlation we can see that mpg is strongly correlated with cylinders,displacement,weight,acceleration and model year are  useful in predicting mpg.
